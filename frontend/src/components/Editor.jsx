@@ -45,7 +45,7 @@ const Editor = () => {
     setQuill(quillServer);
   }, []);
   useEffect(() => {
-    const socketServer = io("http://localhost:9000");
+    const socketServer = io("https://document-writer-api.vercel.app");
     setSocket(socketServer);
     return () => {
       socketServer.disconnect();
