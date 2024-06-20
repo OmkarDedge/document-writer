@@ -1,14 +1,13 @@
+import express from "express";
+import { createServer } from "http";
 import { Server } from "socket.io";
+import cors from "cors";
 import dotenv from "dotenv";
 import Connection from "./database/db.js";
 import {
   getDocument,
   updateDocument,
 } from "./controllers/documentController.js";
-import express from "express";
-import { createServer } from "http";
-import cors from 'cors';
-
 
 dotenv.config();
 
@@ -19,17 +18,18 @@ Connection();
 const app = express();
 
 app.use(cors({
-  origin: 'https://document-writer-frontend.vercel.app'
+  origin: 'https://document-writer-frontend.vercel.app', // Ensure this matches your frontend URL
+  methods: ["GET", "POST"], // Allow methods as needed
+  credentials: true // Enable credentials if required
 }));
 
 const httpserver = createServer(app);
-httpserver.listen(PORT);
 
 const io = new Server(httpserver, {
   cors: {
-    origin: "https://document-writer-frontend.vercel.app",
+    origin: "https://document-writer-frontend.vercel.app", // Ensure this matches your frontend URL
     methods: ["GET", "POST"],
-    credentials: true,
+    credentials: true
   },
 });
 
@@ -38,6 +38,7 @@ io.on("connection", (socket) => {
     const doc = await getDocument(documentId);
     socket.join(documentId);
     socket.emit("load-document", doc.data);
+    
     socket.on("send-changes", (delta) => {
       socket.broadcast.to(documentId).emit("recieve-changes", delta);
     });
@@ -46,4 +47,8 @@ io.on("connection", (socket) => {
       await updateDocument(documentId, data);
     });
   });
+});
+
+httpserver.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
