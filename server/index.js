@@ -7,6 +7,8 @@ import {
 } from "./controllers/documentController.js";
 import express from "express";
 import { createServer } from "http";
+import cors from 'cors';
+
 
 dotenv.config();
 
@@ -15,6 +17,11 @@ const PORT = process.env.PORT || 9000;
 Connection();
 
 const app = express();
+
+app.use(cors({
+  origin: 'https://document-writer-frontend.vercel.app'
+}));
+
 const httpserver = createServer(app);
 httpserver.listen(PORT);
 
