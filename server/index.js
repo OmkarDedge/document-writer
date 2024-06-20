@@ -5,14 +5,20 @@ import {
   getDocument,
   updateDocument,
 } from "./controllers/documentController.js";
+import express from "express";
+import { createServer } from "http";
 
 dotenv.config();
 
-const PORT = 9000;
+const PORT = process.env.PORT || 9000;
 
 Connection();
 
-const io = new Server(PORT, {
+const app = express();
+const httpserver = createServer(app);
+httpserver.listen(PORT);
+
+const io = new Server(httpserver, {
   cors: {
     origin: "https://document-writer-frontend.vercel.app",
     methods: ["GET", "POST"],
