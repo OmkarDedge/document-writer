@@ -8,25 +8,25 @@ The Collaborative Document Editor is a powerful web-based application that enabl
 
 1. Document Creation and Editing:
    
-Users can create new documents and write content using a rich text editor powered by Quill.
+   Users can create new documents and write content using a rich text editor powered by Quill.
 
-Extensive formatting and styling options are available, allowing for a customized document appearance.
+   Extensive formatting and styling options are available, allowing for a customized document appearance.
 
 2. Real-Time Collaboration:
 
-Multiple users can work on the same document simultaneously.
+   Multiple users can work on the same document simultaneously.
 
-Changes made by one user are instantly reflected for all collaborators using Socket.io for real-time updates.
+   Changes made by one user are instantly reflected for all collaborators using Socket.io for real-time updates.
 
 3. User Authentication and Authorization:
 
-Secure login and registration processes for users.
+   Secure login and registration processes for users.
 
-JWT tokens are used for authentication and authorization, ensuring that only authorized users can access and modify documents.
+   JWT tokens are used for authentication and authorization, ensuring that only authorized users can access and modify documents.
 
 4. Data Security:
 
-Protection against SQL injection attacks to maintain data integrity and security.
+   Protection against SQL injection attacks to maintain data integrity and security.
 
 # Technology Stack 
 
