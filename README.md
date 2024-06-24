@@ -42,4 +42,4 @@ Authentication: JWT (JSON Web Token)
 
 # Video Link
 
-https://drive.google.com/file/d/1kXIMGM6032qGolghOpxVGwmazvgBV_hZ/view?usp=sharing
+https://drive.google.com/file/d/1kXIMGM6032qGolghOpxVGwmazvgBV_hZ/view?usp=drive_link
